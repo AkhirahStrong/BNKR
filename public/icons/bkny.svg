@@ -1,0 +1,13 @@
+<svg width="250" height="50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Define a drop shadow filter -->
+    <filter id="drop-shadow" x="-20%" y="-20%" width="150%" height="150%">
+      <feOffset in="SourceAlpha" dx="2" dy="2" result="offsetResult"/>
+      <feGaussianBlur in="offsetResult" stdDeviation="2" result="blurResult"/>
+      <feBlend in="SourceGraphic" in2="blurResult" mode="normal"/>
+    </filter>
+  </defs>
+  <!-- Apply the drop shadow filter to text -->
+  <text x="10" y="30" font-family="Arial" font-size="30" fill="#0e78f9" font-weight="bold" filter="url(#drop-shadow)">((+)) BNKR</text>
+</svg>
+
