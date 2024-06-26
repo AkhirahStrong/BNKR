@@ -96,6 +96,25 @@ const MeetingTypeList = () => {
         className="bg-yellow-1"
       />
 
+      {!callDetails ? (
+        <MeetingModal
+          isOpen={meetingState === "isScheduleMeeting"}
+          onClose={() => setmeetingState(undefined)}
+          title="Create meeting"
+          handleClick={createMeeting}
+        />
+      ) : (
+        <MeetingModal
+          isOpen={meetingState === "isScheduleMeeting"}
+          onClose={() => setmeetingState(undefined)}
+          title="Meeting created"
+          className="text-center"
+          buttonText="StartMeeting"
+          // change the call back functio to an arrow function 03:06:19
+          handleClick={createMeeting}
+        />
+      )}
+
       <MeetingModal
         isOpen={meetingState === "isInstantMeeting"}
         onClose={() => setmeetingState(undefined)}
