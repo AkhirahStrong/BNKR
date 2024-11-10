@@ -102,16 +102,27 @@ const MeetingTypeList = () => {
           onClose={() => setmeetingState(undefined)}
           title="Create meeting"
           handleClick={createMeeting}
-        />
+        >
+          <div className="flex flex-col gap-2.5">
+            <label className="text-base text-normal leading-[22px] text-sky-2">
+              Add a description
+            </label>
+          </div>
+        </MeetingModal>
       ) : (
         <MeetingModal
           isOpen={meetingState === "isScheduleMeeting"}
           onClose={() => setmeetingState(undefined)}
           title="Meeting created"
           className="text-center"
-          buttonText="StartMeeting"
           // change the call back functio to an arrow function 03:06:19
-          handleClick={createMeeting}
+          handleClick={() => {
+            // navigator.clipboard.writeText(meetingLink)
+            // toast({title: 'Link copied'})
+          }}
+          image="/icons/checked.svg"
+          buttonIcon="/icons/copy.svg"
+          buttonText="Copy Meeting Link"
         />
       )}
 
