@@ -8,6 +8,7 @@ import { useUser } from "@clerk/nextjs";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useToast } from "./use-toast";
 import { Textarea } from "./textarea";
+import ReactDatePicker from "react-datepicker";
 
 const MeetingTypeList = () => {
   const router = useRouter();
@@ -120,7 +121,16 @@ const MeetingTypeList = () => {
               Select a date and time
             </label>
             {/* branch name before adding date picker b4datepicker */}
-            {/* <ReactDatePicker /> */}
+            <ReactDatePicker
+              selected={values.dateTime}
+              onChange={(date) => setvalues({ ...values, dateTime: date! })}
+              showTimeSelect
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              timeCaption="time"
+              dateFormat="MMM d, yyyy h:mm aa"
+              className="w-full rounded bg-dark-2 p-2 focus:outline-none"
+            />
           </div>
         </MeetingModal>
       ) : (
