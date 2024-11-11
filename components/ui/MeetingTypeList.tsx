@@ -7,6 +7,7 @@ import MeetingModal from "./MeetingModal";
 import { useUser } from "@clerk/nextjs";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useToast } from "./use-toast";
+import { Textarea } from "./textarea";
 
 const MeetingTypeList = () => {
   const router = useRouter();
@@ -107,6 +108,19 @@ const MeetingTypeList = () => {
             <label className="text-base text-normal leading-[22px] text-sky-2">
               Add a description
             </label>
+            <Textarea
+              className="border-none bg-dark-2 focus-visible:ring-0 focus-visible:ring-offset-0"
+              onChange={(e) => {
+                setvalues({ ...values, description: e.target.value });
+              }}
+            />
+          </div>
+          <div className="flex w-full flex-col gap-2.5">
+            <label className="text-base text-normal leading-[22px] text-sky-2">
+              Select a date and time
+            </label>
+            {/* branch name before adding date picker b4datepicker */}
+            {/* <ReactDatePicker /> */}
           </div>
         </MeetingModal>
       ) : (
