@@ -24,7 +24,6 @@ const MeetingTypeList = () => {
     link: "",
   });
 
-  //Start here with user effect time: 2:13:54
   const [callDetails, setcallDetails] = useState<Call>();
   const { toast } = useToast();
 
@@ -66,6 +65,8 @@ const MeetingTypeList = () => {
       toast({ title: "Failed to creat meeting" });
     }
   };
+
+  const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/MEETING/${callDetails?.id}`;
 
   return (
     <section className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -139,10 +140,10 @@ const MeetingTypeList = () => {
           onClose={() => setmeetingState(undefined)}
           title="Meeting created"
           className="text-center"
-          // change the call back functio to an arrow function 03:06:19
+          // change the call back function to an arrow function 03:06:19
           handleClick={() => {
-            // navigator.clipboard.writeText(meetingLink)
-            // toast({title: 'Link copied'})
+            navigator.clipboard.writeText(meetingLink);
+            toast({ title: "Link copied" });
           }}
           image="/icons/checked.svg"
           buttonIcon="/icons/copy.svg"
