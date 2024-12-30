@@ -20,7 +20,7 @@ import {
 import { LayoutList, Users } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import EndCallButton from "./EndCallButton";
-import Loader from "../Loader";
+import Loader from "./Loader";
 
 // Define the type for call layout
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";

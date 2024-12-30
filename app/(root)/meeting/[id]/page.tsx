@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { StreamCall, StreamTheme } from "@stream-io/video-react-sdk";
 import { useParams } from "next/navigation";
-import Loader from "@/components/Loader";
+import Loader from "@/components/ui/Loader";
 
 // import { useGetCallById } from "@/hooks/useGetCallById";
 import MeetingSetup from "@/components/ui/MeetingSetup";
