@@ -1,4 +1,4 @@
-import { useStreamChat } from "@/providers/StreamChatProvider";
+// import { useStreamChat } from "@/providers/StreamChatProvider";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useEffect, useState } from "react";
 // import { StreamChat } from "stream-chat";

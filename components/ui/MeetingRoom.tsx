@@ -21,7 +21,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import EndCallButton from "./EndCallButton";
 import Loader from "./Loader";
 import ChatComponent from "./ChatComponent";
-// import ChatComponent from "./ChatComponent";
 
 // Define the type for call layout
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";

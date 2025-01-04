@@ -12,7 +12,7 @@ import {
 import { ReactNode, useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 
-import "stream-chat-react/dist/css/v2/index.css";
+// import "stream-chat-react/dist/css/v2/index.css";
 
 const API_KEY = process.env.NEXT_PUBLIC_STREAM_API_KEY;
 

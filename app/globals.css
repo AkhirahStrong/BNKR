@@ -201,5 +201,27 @@
 } */
 
 
+/* ==== stream chat class override ===== */
+
+ .str-chat__container{
+  background-color: #1c1f2e;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  align-content: center;
+ }
+
+/* .str-chat__ul{
+ background-color: azure;
+} */
+
+/* .str-chat__message-text{
+ 
+}
+
+.str-chat__message-bubble{
+  
+} */
+
 
 
