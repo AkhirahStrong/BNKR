@@ -9,7 +9,6 @@ import {
   useCallStateHooks,
 } from "@stream-io/video-react-sdk";
 import React, { useState } from "react";
-// import ChatComponent from "./Chat";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,6 +20,8 @@ import { LayoutList, Users } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import EndCallButton from "./EndCallButton";
 import Loader from "./Loader";
+import ChatComponent from "./ChatComponent";
+// import ChatComponent from "./ChatComponent";
 
 // Define the type for call layout
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
@@ -31,7 +32,6 @@ const MeetingRoom = () => {
   const isPersonalRoom = !!searchParams.get("personal");
   const [layout, setLayout] = useState<CallLayoutType>("speaker-left");
   const [showParticipants, setShowParticipants] = useState(false);
-  // const [showChat, setShowChat] = useState(true); // Toggle chat visibility
   const router = useRouter();
   const { useCallCallingState } = useCallStateHooks();
   const callingState = useCallCallingState();
@@ -65,19 +65,12 @@ const MeetingRoom = () => {
             <CallParticipantsList onClose={() => setShowParticipants(false)} />
           </div>
         )}
-      </div>
 
-      {/* Container for chat */}
-      {/* {showChat && (
-        <div className="absolute right-0 h-full w-[300px] bg-dark-2">
-          <ChatComponent
-            userId={userId}
-            userToken={userToken}
-            channelId={channelId}
-          />
+        {/* Chat Panel */}
+        <div className="absolute right-0 h-full w-[300px] bg-[#1a1d21]">
+          <ChatComponent />
         </div>
-      )} */}
-      {/* </div> */}
+      </div>
 
       {/* Container for the call controls and other buttons */}
       <div className="fixed bottom-0 flex w-full items-center justify-center gap-5 flex-wrap">
@@ -122,13 +115,6 @@ const MeetingRoom = () => {
             <Users size={20} className="text-white" />
           </div>
         </button>
-
-        {/* Button to toggle chat */}
-        {/* <button onClick={() => setShowChat((prev) => !prev)}>
-          <div className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]">
-            Chat
-          </div>
-        </button> */}
 
         {/* Render the end call button if it's not a personal room */}
         {!isPersonalRoom && <EndCallButton />}

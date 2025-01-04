@@ -6,6 +6,7 @@ import "@stream-io/video-react-sdk/dist/css/styles.css";
 import { Toaster } from "@/components/ui/toaster";
 // import "react-datepicker/dist/react-datepicker.ccs";
 import "react-datepicker/dist/react-datepicker.css";
+// import "stream-chat-react/dist/css/v2/index.css";
 
 const inter = Inter({ subsets: ["latin"] });
 // 3:03:08

@@ -8,7 +8,7 @@ const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
 const apiSecret = process.env.STREAM_SECRET_KEY;
 
 // Defines an asynchronous function to provide a token.
-export const tokenProvider = async () => {
+export const tokenProvider = async (id: string) => {
   // Fetches the current user using Clerk.
   const user = await currentUser();
 

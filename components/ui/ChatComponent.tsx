@@ -1,70 +1,55 @@
 "use client";
 
+// import { useStreamChat } from "@/providers/StreamChatProvider";
+import { useEffect, useState } from "react";
 import {
   Chat,
   Channel,
-  ChannelHeader,
   MessageList,
   MessageInput,
+  ChannelHeader,
+  useChatContext,
 } from "stream-chat-react";
-import { StreamChat } from "stream-chat";
-import { useEffect, useState } from "react";
 
-const ChatComponent = ({
-  userId,
-  userToken,
-  channelId,
-}: {
-  userId: string;
-  userToken: string;
-  channelId: string;
-}) => {
-  const [chatClient, setChatClient] = useState<StreamChat | null>(null);
+const ChatComponent = () => {
+  // const chatClient = useStreamChat();
+  const { client } = useChatContext(); // Access the chat client from context
+  const [channel, setChannel] = useState<any>(null);
 
   useEffect(() => {
-    // Initialize the chat client
-    const client = new StreamChat(process.env.NEXT_PUBLIC_STREAM_API_KEY || "");
+    if (!client) return;
 
-    // Connect the user
-    client
-      .connectUser(
-        {
-          id: userId,
-          name: `User ${userId}`, // Set the username dynamically
-        },
-        userToken
-      )
-      .then(() => setChatClient(client));
+    // Create or get a channel (e.g., "general")
+    const chatChannel = client.channel("messaging", "general", {
+      name: "General Chat",
+    });
 
-    // Cleanup on component unmount
+    const initializeChannel = async () => {
+      // Watches the channel for updates (messages, reactions, etc.)
+      await chatChannel.watch();
+      // Sets the initialized channel in the component's state
+      setChannel(chatChannel);
+    };
+
+    initializeChannel();
+
     return () => {
-      if (client) {
-        client.disconnectUser();
+      if (channel) {
+        channel.stopWatching();
       }
     };
-  }, [userId, userToken]);
+  }, [client, channel]); // Only run this effect when chatClient changes
 
-  if (!chatClient) return <p>Loading chat...</p>;
-
-  // Fetch or create a channel
-  const channel = chatClient.channel("messaging", channelId, {
-    name: "Meeting Chat",
-    members: [userId],
-  });
+  // Wait for the channel to be ready
+  if (!channel) {
+    return <p>Loading chat...</p>;
+  }
 
   return (
-    <Chat client={chatClient} theme="messaging light">
-      <Channel channel={channel}>
-        <div className="h-[400px] w-full bg-[#1a1d21] text-white rounded-lg p-4">
-          {/* Channel Header */}
-          <ChannelHeader />
-          {/* Message List */}
-          <MessageList />
-          {/* Message Input */}
-          <MessageInput />
-        </div>
-      </Channel>
-    </Chat>
+    <Channel channel={channel}>
+      <MessageList />
+      <MessageInput />
+    </Channel>
   );
 };
 

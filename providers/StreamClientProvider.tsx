@@ -1,4 +1,5 @@
 "use client";
+//@ts-nocheck
 
 import { tokenProvider } from "@/actions/stream.actions";
 import Loader from "@/components/ui/Loader";
@@ -11,14 +12,9 @@ import {
 import { ReactNode, useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 
-const API_KEY = process.env.NEXT_PUBLIC_STREAM_API_KEY;
-// const userId = "user-id";
-// const token = "authentication-token";
-// const user: User = { id: userId };
+import "stream-chat-react/dist/css/v2/index.css";
 
-// const client = new StreamVideoClient({ apiKey, user, token });
-// const call = client.call("default", "my-first-call");
-// call.join({ create: true });
+const API_KEY = process.env.NEXT_PUBLIC_STREAM_API_KEY;
 
 const StreamVideoProvider = ({ children }: { children: ReactNode }) => {
   const [VideoClient, setVideoClient] = useState<StreamVideoClient>();
