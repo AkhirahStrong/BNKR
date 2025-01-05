@@ -16,7 +16,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LayoutList, Users } from "lucide-react";
+import { LayoutList, MessageCircle, Users } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import EndCallButton from "./EndCallButton";
 import Loader from "./Loader";
@@ -31,6 +31,7 @@ const MeetingRoom = () => {
   const isPersonalRoom = !!searchParams.get("personal");
   const [layout, setLayout] = useState<CallLayoutType>("speaker-left");
   const [showParticipants, setShowParticipants] = useState(false);
+  const [isChatVisible, setIsChatVisible] = useState(false); // State for chat visibility
   const router = useRouter();
   const { useCallCallingState } = useCallStateHooks();
   const callingState = useCallCallingState();
@@ -66,9 +67,11 @@ const MeetingRoom = () => {
         )}
 
         {/* Chat Panel */}
-        <div className="absolute right-0 h-full w-[300px] bg-[#1a1d21]">
-          <ChatComponent />
-        </div>
+        {isChatVisible && ( // Conditionally render the chat panel
+          <div className="absolute right-0 h-full w-[300px] bg-[#1a1d21]">
+            <ChatComponent />
+          </div>
+        )}
       </div>
 
       {/* Container for the call controls and other buttons */}
@@ -112,6 +115,13 @@ const MeetingRoom = () => {
         <button onClick={() => setShowParticipants((prev) => !prev)}>
           <div className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]">
             <Users size={20} className="text-white" />
+          </div>
+        </button>
+
+        {/* Toggle Chat Button */}
+        <button onClick={() => setIsChatVisible((prev) => !prev)}>
+          <div className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]">
+            <MessageCircle size={20} className="text-white" />
           </div>
         </button>
 
