@@ -50,12 +50,12 @@ const ChatComponent = () => {
     <div className="h-screen flex flex-col max-w-lg mx-auto border rounded-lg overflow-hidden shadow-lg">
       <Channel channel={channel}>
         {/* Chat Input */}
-        <div className="border-b p-2 bg-black">
+        <div className="border-b p-2 bg-white">
           <MessageInput />
         </div>
 
         {/* Chat Messages */}
-        <div className="flex-1 overflow-y-auto bg-gray-50 p-4">
+        <div className="flex-1  bg-gray-50 p-4">
           <MessageList />
         </div>
       </Channel>

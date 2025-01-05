@@ -208,20 +208,24 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  align-content: center;
+  
  }
 
-/* .str-chat__ul{
- background-color: azure;
-} */
-
-/* .str-chat__message-text{
  
+.str-chat__message-textarea-container{
+  height: 100px !important;
 }
 
-.str-chat__message-bubble{
-  
-} */
+.str-chat__message-textarea{
+  resize: vertical; /* Allow resizing only vertically */
+  min-height: 50px; /* Set a minimum height */
+  max-height: 300px; /* Set a maximum height */
+  width: 100%; /* Make it full-width */
+  /* padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px; */
+
+}
 
 
 
